@@ -1,29 +1,41 @@
-// Messo il form dentro una variabile.
+
 const infoForm = document.querySelector('form');
 
-// Aggiunto metodo per registrare una funzione con il submit.
 infoForm.addEventListener ('submit',
     function(event) {
 
         event.preventDefault(); 
 
-        // Variabile con il valore del numero dei Km.
+        const passengerName = document.getElementById('name').value;
+
         const kmNumber = document.getElementById('km-number').value;
 
-        // Variabile con il valore del numero del eta'.
-        const age = document.getElementById('age').value;
-        
-        // Variabile con il valore del prezzo del biglietto.
+        const ageSelect = document.getElementById('age');
+
+        const ageText = ageSelect.options[ageSelect.selectedIndex].text;
+
         let ticketPrice = 0.21 * kmNumber;
 
-        if (age < 18) {
+        let ticketInfo
+
+        if (ageText === 'Minorenne') {
             ticketPrice = ticketPrice * 0.80;
-        }
-        else if (age > 65) {
+
+            ticketInfo = document.getElementById('ticket-type').innerText = 'Scontato 20%'
+            
+        } else if (ageText === 'Over 65') {
             ticketPrice = ticketPrice * 0.60;
+
+            ticketInfo = document.getElementById('ticket-type').innerText = 'Scontato 40%'
+
+        } else {
+            
+            ticketInfo = document.getElementById('ticket-type').innerText = 'Biglietto Standard'
         }
 
-        console.log('Il prezzo che devi pagare per il biglietto è: ' + ticketPrice.toFixed(2) + ' euro');
+        document.getElementById('ticket-price').innerText = ticketPrice.toFixed(2) + '€';
+
+        document.getElementById('ticket-name').innerText = passengerName;
     }
 );
 

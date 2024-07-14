@@ -15,38 +15,141 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         
     </head>
-    <body>
+    <body class="bg-success">
         
-        <main>
-            <form>
-                <div>
-                    <label for="km-number"></label>
-                    <input 
-                        type="number"
-                        id="km-number"
-                        name="km-number"
-                        placeholder="Inserisci i km che vuoi percorrere"
-                        required>
-                </div>
+        <header>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container">
+                    <a class="navbar-brand w-25" href="#">
+                        <img src="img/logo.png" alt="logo" class="w-50">
+                    </a>
 
-                <div>
-                    <label for="age"></label>
-                    <input 
-                        type="number"
-                        id="age"
-                        name="age"
-                        placeholder="Inserisci la tua età"
-                        min="0"
-                        max="150"
-                        required>
-                </div>
-
-                <div>
-                    <button id="submit-button" type="submit">
-                        Invia
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav text-uppercase w-100 d-flex justify-content-end">
+                            <a class="nav-link" href="#">Chi siamo</a>
+                            <a class="nav-link" href="#">Frecce</a>
+                            <a class="nav-link" href="#">Offerte</a>
+                            <a class="nav-link" href="#">Info</a>
+                        </div>
+
+                    </div>
                 </div>
-            </form>
+            </nav>
+        </header>
+
+        <main>
+            <div class="container pt-5 text-white">
+                <h1 class="text-uppercase text-center pb-5">
+                    Calcola il prezzo del tuo biglietto
+                </h1>
+                <div class="card">
+                    <div class="card-body">
+                        <form class="row d-flex justify-content-center text-center">
+                            <div class="col-12 col-lg-3">
+                                <label for="name" class="form-label">
+                                    Nome Cognome
+                                </label>
+                                <input 
+                                    class="form-control text-center"
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    minlength="3"
+                                    maxlength="100"
+                                    required>
+                            </div>
+
+                            <div class="col-12 col-lg-3 mx-5">
+                                <label for="km-number" class="form-label">
+                                    KM da percorrere
+                                </label>
+                                <input
+                                    class="form-control text-center"
+                                    type="number"
+                                    id="km-number"
+                                    name="km-number"
+                                    min="0"
+                                    required>
+                            </div>
+
+                            <div class="col-12 col-lg-3">
+                                <label for="age" class="form-label">
+                                    Fascia d'età
+                                </label>
+                                <select id="age" class="form-select text-center" name="age">
+                                    <option id="adult">Maggiorenne</option>
+                                    <option id="minor">Minorenne</option>
+                                    <option id="senior">Over 65</option>
+                                </select>
+                            </div>
+
+                            <div class="col-12 pt-5">
+                                <button 
+                                    id="submit-button" 
+                                    type="submit"
+                                    class="btn btn-success me-3">
+                                    Invia
+                                </button>
+
+                                <button 
+                                    type="reset" 
+                                    value="reset" 
+                                    class="btn btn-warning">
+                                    Svuota
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="container">
+                <h1 class="text-uppercase text-center text-white py-5">
+                    Il tuo biglietto
+                </h1>
+
+                <div class="card">
+                    <div class="card-body mx-3">
+                        <h4 class="text-uppercase">
+                            Dettaglio passengeri
+                        </h4>
+                        <div class="row">
+                            <div class="col-3 bg-success d-flex align-items-center justify-content-center flex-column">
+                                <h5 class="text-white">
+                                    NOME PASSEGGERO
+                                </h5>
+                                <span class="fs-4 text-white text-uppercase" id="ticket-name">
+                                    
+                                </span>
+                            </div>
+                            <div class="col-9">
+                                <table class="table">
+                                    <thead>
+                                      <tr>
+                                        <th scope="col">Offerta</th>
+                                        <th scope="col">Carrozza</th>
+                                        <th scope="col">Codice CP</th>
+                                        <th scope="col">Costo biglietto</th>
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                      <tr>
+                                        <td id="ticket-type">Biglietto Standard</td>
+                                        <td>5</td>
+                                        <td>92911</td>
+                                        <td id="ticket-price">0.00€</td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </main>
          <!-- Bootstrap JS -->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
